@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stack</title>
+</head>
+<body>
+    这个版本的Stacke
+</body>
+</html>
+<script>
+    class Stack {
+        constructor(){
+            this.items = {};
+            this.count = 0;
+        }
+
+        push(element){
+            this.items[this.count] = element;
+            this.count++;
+        }
+
+        pop(){
+            if(this.isEmpty()) return undefined
+            this.count--;
+            //  保存起来用于返回
+            const result = this.items[this.count];
+            delete this.items[this.count];
+            return result;
+        }
+
+        peek(){
+            if(this.isEmpty()) return undefined
+            return this.items[this.count - 1]
+        }
+
+        isEmpty(){
+            return this.count === 0;
+        }
+
+        size(){
+            return this.count;            
+        }
+
+        clear(){
+            this.items = {};
+            this.count = 0;
+            //  或者我们也能遵循LIFO原则
+            // while(!this.isEmpty()){
+            //     this.items.pop()
+            // }
+        }
+        toString(){
+            if(this.isEmpty()) return '';
+            let objString = `${this.items[0]}`;
+            for (let i = 1; i < this.count; i++) {
+                objString = `${objString},${this.items[i]}`;                
+            }
+            return objString;
+        }
+    }
+
+    const stack = new Stack();
+
+    stack.push(1);
+    stack.push(22);
+    stack.push(39);
+
+    console.log(stack.size());
+    console.log(stack.isEmpty());
+    console.log(stack.peek());
+
+    console.log(stack.items);
+    console.log(stack.toString());  //  1,22,39
+
+    console.log(Object.getOwnPropertyNames(stack));
+    console.log(Object.keys(stack));
+    console.log(stack.items);
+</script>

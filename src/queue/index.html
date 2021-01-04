@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>队列</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    class Queue {
+        constructor() {
+            this.count = 0; //  控制队列大小
+            this.locwestCount = 0;  //  追踪第一个元素
+            this.items = {};
+        }
+
+        //  往队列里添加新元素 ，最新的只能添加到末尾
+        enqueue(element) {
+            this.items[this.count] = element;
+            this.count += 1;
+        }
+
+        //  移除元素
+        dequeue() {
+            if (this.isEmtry()) return undefined;
+
+            const result = this.items[this.locwestCount];
+            //  从this.count开始是0开始，下面++能够记录删除的元素，保持locwestCount在第一个
+            this.locwestCount += 1;
+            return result;
+        }
+
+        // 获取队列最前面一项
+        peek() {
+            if (this.isEmtry()) return undefined;
+            return this.items[this.locwestCount]
+        }
+
+        isEmtry() {
+            return this.count - this.locwestCount === 0;
+        }
+
+        size() {
+            return this.count - this.locwestCount;
+        }
+
+        clear() {
+            this.count = 0;
+            this.locwestCount = 0;
+            this.items = {};
+        }
+
+        toString() {
+            if (this.isEmtry()) return '';
+            let objString = `${this.items[this.locwestCount]}`; //  先把第一项放进去
+            for (let i = this.locwestCount + 1; i < this.count; i++) {
+                objString = `${objString},${this.items[i]}`;    //  每一项依次放进去
+            }
+            return objString;
+        }
+    }
+
+    const queue = new Queue();
+    console.log(queue.isEmtry(), '空的');
+
+    queue.enqueue('李白')
+    queue.enqueue('李清照')
+    console.log(queue.items);
+    console.log(queue.toString());
+    console.log(queue.isEmtry(),'不为空');
+    queue.dequeue()
+    console.log(queue.size(),'当前队列长度');
+    console.log(queue.peek(),'第一项');
+</script>

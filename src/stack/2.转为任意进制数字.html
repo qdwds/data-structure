@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    案例：转为任意进制数字
+</body>
+
+</html>
+<script type="module">
+    import { Stack } from './stack.js'
+    console.log(Stack);
+    function decimaToBinary(decNumbre,base) {
+        const stack = new Stack();
+        const digits = `0123456789ABCDEFGHIGKLMNOPQRSTUVWXYZ`;
+        let number = decNumbre;
+        let rem;
+        let baseString = '';
+        if(!(base >= 2 && base <= 36))return ''
+        while (number > 0) {
+            rem = Math.floor(number % base);
+            stack.push(rem);
+            number = Math.floor(number / base);
+        }
+        while (!stack.isEmpty()) {
+            baseString += digits[stack.pop()];
+        }
+        return baseString;
+    }
+    console.log(decimaToBinary(10,32));
+</script>

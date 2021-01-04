@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./deque.js"></script>
+<script>
+    function palindromeChecker(palindrome) {
+        if (palindrome === undefined || palindrome === null || (palindrome !== null && palindrome.length === 0)) {
+            return false;
+        }
+
+        const deque = new Deque();
+        //  只能校样字符串。不过这是一种思路
+        const lowerString = palindrome.toLocaleLowerCase().split(' ').join('');
+        
+        let isEqual = true;
+        let firstChar,lastChar;
+        for (let i = 0; i < lowerString.length; i++) {
+            deque.addBack(lowerString.charAt(i));
+        }
+
+        while(deque.size() > 1 && isEqual){
+            //  统一移除前端 后端各一项
+            firstChar = deque.removeFront();
+            lastChar = deque.removeBack();
+            // 如果移除的两项相不等说明不是回文数
+            if(firstChar !== lastChar){
+                isEqual = false
+            }
+        }
+        return isEqual;
+    }
+
+    console.log(palindromeChecker('aa1qwedaa'));
+</script>

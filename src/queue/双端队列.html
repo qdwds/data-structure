@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双端队列</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./deque.js"></script>
+<script>
+    const deque = new Deque();
+    console.log(deque.isEmtry(), '真为空');      //  true "真为空"
+    deque.addBack('a')
+    deque.addBack('b');
+    console.log(deque.items);       //  {0: "a", 1: "b"}
+    deque.addBack('c')
+    console.log(deque.size(), '长度');       //  3 "长度"
+    console.log(deque.isEmtry(), '假为不空');        //  false "假为不空"
+    console.log(deque.removeFront(), '移除掉的值');      //  a 移除掉的值
+    console.log(deque.items);       //  {1: "b", 2: "c"}
+    console.log(deque.removeBack(), '被删除的值');       //  c 被删除的值
+    console.log(deque.items);
+    deque.addBack('d')
+    console.log(deque.items);       //  {1: "b"}
+    console.log(deque.toString());      //  b,d
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    案例：十进制转二进制
+</body>
+</html>
+<script type="module">
+    import {Stack} from './stack.js' 
+    console.log(Stack);
+    function decimaToBinary(decNumbre){
+        const stack = new Stack();
+        let number = decNumbre;
+        let rem ;
+        let binaryString = '';
+
+        while(number > 0){
+            rem = Math.floor(number  % 2);
+            stack.push(rem);
+            number = Math.floor(number / 2);
+        }
+        while(!stack.isEmpty()){
+            binaryString += stack.pop();
+        }
+        return binaryString;
+    }
+    console.log(decimaToBinary(10));
+</script>
