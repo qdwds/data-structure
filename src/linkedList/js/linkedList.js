@@ -1,15 +1,3 @@
-const defaultEquals = (a, b) => {
-    return a === b
-}
-
-//  节点的单独节点属性 哈哈
-const Node = class {
-    constructor(element) {
-        this.element = element;
-        this.next = null;
-    }
-}
-console.log(new Node());
 const LinkedList = class {
     constructor(equalsFn = defaultEquals) {
         this.count = 0; //  储存链表数量
@@ -140,14 +128,3 @@ const LinkedList = class {
  * }
  */
 
-const linkedList = new LinkedList();
-linkedList.push('a');
-linkedList.push('b');
-linkedList.push('c');
-linkedList.push('d');
-linkedList.push('e');
-linkedList.push('f');
-console.log(linkedList.head);   //  链表数据结构    仔细看数据结构
-console.log(linkedList.removeAt(2));
-console.log(linkedList.head);   //  链表数据结构    仔细看数据结构
-console.log(linkedList.toString());

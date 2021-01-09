@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    双向链表
+</body>
+</html>
+<script src="./js/index.js"></script>
+<script src="./js/linkedList.js"></script>
+<script src="./js/doublyLikedList.js"></script>
+<script>
+    const doublyLinkedList = new DoublyLinkedList()
+    doublyLinkedList.insert('a',0);
+    doublyLinkedList.insert('b',1);
+    doublyLinkedList.insert('c',2);
+    console.log(doublyLinkedList.head);
+    // null => c <=> a <=> b => null    // 这是当前数据结构，就像死循环
+    
+    console.log(doublyLinkedList.removeAt(2));
+    console.log(doublyLinkedList.head);
+
+</script>

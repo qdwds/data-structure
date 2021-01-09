@@ -12,4 +12,33 @@
 </body>
 
 </html>
-<script type="module" src="./linkedList.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/linkedList.js"></script>
+<script>
+
+/**
+ * @链表数据结构
+ * Node{
+ *   element:"a",
+ *   next:@Node {
+ *      element:"b",
+ *      next:@Node {
+ *         element:"c",
+ *         next:null
+ *     }
+ *   }
+ * }
+ */
+
+const linkedList = new LinkedList();
+linkedList.push('a');
+linkedList.push('b');
+linkedList.push('c');
+linkedList.push('d');
+linkedList.push('e');
+linkedList.push('f');
+console.log(linkedList.head);   //  链表数据结构    仔细看数据结构
+console.log(linkedList.removeAt(2));
+console.log(linkedList.head);   //  链表数据结构    仔细看数据结构
+console.log(linkedList.toString());
+</script>
