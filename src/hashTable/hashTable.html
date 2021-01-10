@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="./hashTable.js"></script>
+<script>
+    const hashTable = new HashTable();
+    hashTable.put('a',1);
+    hashTable.put('b',2);
+    hashTable.put('b',3);
+    hashTable.put('d',3);
+    console.log(hashTable.table);
+    console.log(hashTable.get('a'));
+    console.log(hashTable.hashCode('a'));
+    console.log(hashTable.toString());
+</script>
