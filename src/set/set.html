@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./set.js"></script>
+<script>
+    const set1 = new Set();
+    const set2 = new Set();
+    set1.add('a');
+    set1.add('b');
+
+    set2.add('b');
+    // set2.add('c');
+    const newSet = set1.union(set2);
+    console.log(newSet);
+
+    const intersection =set1.intersection(set2);
+    console.log(intersection.values());
+
+    const difference = set1.difference(set2);
+    console.log(difference.values());
+
+    const isSubsetOf = set2.isSubsetOf(set1);
+    console.log(isSubsetOf);
+</script>

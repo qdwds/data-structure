@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    原生set模拟 并集 交集 差集 子集运算
+</body>
+</html>
+<script>
+
+    const set1 = new Set();
+    const set2 = new Set();
+    set1.add(1)
+    set1.add(2)
+    set1.add(3)
+
+    set2.add(2)
+    set2.add(3)
+    set2.add(4)
+    //  并集
+    const union = (set1,set2) => {
+        const newSet = new Set();
+        set1.forEach(element => {
+            newSet.add(element)
+        });
+        set2.forEach(element =>{
+            newSet.add(element)
+        })
+        return  newSet;
+    }
+    const unionResult = union(set1,set2);
+    console.log(unionResult);   //  Set(4) {1, 2, 3, 4}
+
+    // 交集
+    const intersection = (set1,set2)=>{
+        const newSet = new Set();
+        set1.forEach(element => {
+            if(set2.has(element)){
+                newSet.add(element)
+            }
+        })
+        return newSet;
+    }
+    const inter = intersection(set1,set2)
+    console.log(inter);
+
+    //  差集
+    const difference =  (set1,set2)=>{
+        const newSet = new Set();
+        set1.forEach(element => {
+            if(!set2.has(element)){
+                newSet.add(element)
+            }
+        })
+        return newSet;
+    }
+    const diff = difference(set1,set2)
+    console.log(diff);
+
+
+    //  es6模拟
+    //  并集
+    console.log(new Set([...set1,...set2]));
+    //  交集
+    console.log(new Set([...set1].filter(element => set2.has(element))));
+    //  差集
+    console.log(new Set([...set1].filter(element => !set2.has(element))));
+
+</script>

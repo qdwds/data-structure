@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    字典数据结构
+</body>
+</html> 
+<script src="./map.js"></script>
+<script>
+    const map = new Dictionary();
+    map.set('a',1);
+    map.set('b',2);
+    map.set('c',3);
+    console.log(map.table);
+    // map.remove('a');
+    console.log(map.table);
+    console.log(map.get(null));
+    console.log(map.keyValues());
+    console.log(map.keys());
+    console.log(map.values());
+    console.log(map.toString());
+    map.forEach((k,v)=>{
+        console.log(k);
+        console.log(v);
+    })
+</script>
