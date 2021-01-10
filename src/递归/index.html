@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    function fun (num){
+        if(num <= 0){
+            return 1;
+        }else{
+            return fun(num - 1 ) *  num;
+        }
+    }
+    console.log(fun(11393));
+
+    let i = 0;
+    function recursiveFn(){
+        i++;
+        recursiveFn();
+    }
+    try{
+        recursiveFn();
+    }catch(err){
+        console.log(i , err);
+    }
+</script>
