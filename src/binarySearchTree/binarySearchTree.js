@@ -124,12 +124,11 @@ class BinarySearchTree {
         return this.searchNode(this.root, key)
     }
     searchNode(node, key) {
-        debugger
         if (node === null) return false;
-
-        if (this.defaultCompare(key, node.key) === -1) {
+        let result = this.defaultCompare(key, node.key)
+        if (result === -1) {
             return this.searchNode(node.left, key);
-        } else if (this.defaultCompare(key, node.key === 1)) {
+        } else if (result === 1) {
             return this.searchNode(node.right, key)
         } else {
             return true;
