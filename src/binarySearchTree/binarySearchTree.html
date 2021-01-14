@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    二叉搜索树
+    <a href="https://www.yuque.com/qdwds/uee630/qe52ca/edit">https://www.yuque.com/qdwds/uee630/qe52ca/edit</a>
+</body>
+</html>
+<script src="./binarySearchTree.js"></script>
+<script>
+    let b = new BinarySearchTree();
+    b.insert(11)
+    b.insert(7)
+    b.insert(15)
+    b.insert(5)
+    b.insert(9)
+    b.insert(13)
+    b.insert(20)
+    b.insert(3)
+    b.insert(6)
+    b.insert(8)
+    b.insert(10)
+    b.insert(12)
+    b.insert(14)
+    b.insert(18)
+    b.insert(25)
+ 
+    console.log(b.root);
+    // b.inOrderTraverse((value) => console.log(value))
+    // b.perOrderTraverse((value) => console.log(value))  
+    // b.postOrderTraverse((value) => console.log(value))  
+    // console.log(b.min());
+    // console.log(b.max());
+    console.log(b.search(1));
+    console.log(b.search(8));
+</script>
