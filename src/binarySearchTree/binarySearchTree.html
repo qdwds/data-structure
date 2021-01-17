@@ -10,7 +10,7 @@
     <a href="https://www.yuque.com/qdwds/uee630/qe52ca/edit">https://www.yuque.com/qdwds/uee630/qe52ca/edit</a>
 </body>
 </html>
-<script src="./binarySearchTree.js"></script>
+<script src="./js/binarySearchTree.js"></script>
 <script>
     let b = new BinarySearchTree();
     b.insert(11)
@@ -21,20 +21,24 @@
     b.insert(13)
     b.insert(20)
     b.insert(3)
-    b.insert(6)
+    // b.insert(6)
     b.insert(8)
     b.insert(10)
     b.insert(12)
     b.insert(14)
     b.insert(18)
     b.insert(25)
+    b.insert(17)
+    b.insert(19)
  
-    console.log(b.root);
+    // console.log(b.root);
     // b.inOrderTraverse((value) => console.log(value))
     // b.perOrderTraverse((value) => console.log(value))  
     // b.postOrderTraverse((value) => console.log(value))  
     // console.log(b.min());
     // console.log(b.max());
-    console.log(b.search(1));
-    console.log(b.search(8));
+    // console.log(b.search(1));
+    // console.log(b.search(8));
+    console.log(b.remove(15));
+    console.log(b.root);
 </script>

@@ -54,7 +54,7 @@ class BinarySearchTree {
         }
         return a < b ?
             -1 /* 左侧 比父节点小 */ :
-            1  /* 右侧 比父节点大 */;
+            1  /* 右侧 比父节点大 */ ;
     }
 
     //  中序遍历
@@ -105,7 +105,7 @@ class BinarySearchTree {
         while (node !== null && node.left !== null) {
             node = node.left;
         }
-        return node.key;
+        return node;
     }
 
     //  查找最大值
@@ -125,6 +125,7 @@ class BinarySearchTree {
     }
     searchNode(node, key) {
         if (node === null) return false;
+
         let result = this.defaultCompare(key, node.key)
         if (result === -1) {
             return this.searchNode(node.left, key);
@@ -132,6 +133,43 @@ class BinarySearchTree {
             return this.searchNode(node.right, key)
         } else {
             return true;
+        }
+    }
+
+    //  移除 节点返回一个新的root树，而不是返回移除的节点值
+    remove(key) {
+        this.root = this.removeNode(this.root, key);
+    }
+    removeNode(node, key) {
+        if (node === null) return false;
+        //  key 比 当前节点小
+        if (this.defaultCompare(key, node.key) === -1) {
+            node.left = this.removeNode(node.left, key)
+            return node;
+        } else if (this.defaultCompare(key, node.key) === 1) {
+            //  key 比当前节点大
+            node.right = this.removeNode(node.right, key);
+            return node;
+        } else {
+            //  { 1 } 情况1: 移除没有左右叶的节点
+            if (node.let === null && node.right === null) {
+                node = null;
+                return node;
+            }
+            // { 2 } 情况2：移除只存在 左叶或右叶的 节点
+            if (node.left === null) {
+                node = node.left;   //  null  赋值给当前节点表示移除
+                return node;
+            } else if (node.right === null) {
+                node = node.right   //  null  赋值给当前节点表示移除
+                return node;
+            }
+
+            // { 3 }  情况3：移除有两个子节点的节点
+            const aux = this.minNode(node.right);   //  找到右侧最小节点
+            node.key = aux.key; //  最小节点更新 要移除的这个节点
+            node.right = this.removeNode(node.right, aux.key);  //  移除掉原来位置的值
+            return node;
         }
     }
 }
