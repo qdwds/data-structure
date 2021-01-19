@@ -73,7 +73,7 @@ class AVLTree extends BinarySearchTree {
         } else {
             return node;
         }
-debugger
+        
         //  进行二叉树平衡操作
         const balanceFactor = this.getBalanceFactor(node);
         //  左侧树插入节点后不平衡情况下
