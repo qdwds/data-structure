@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    自平衡 二叉搜索树   插入有问题   回头过来看
+    自平衡 二叉搜索树
 </body>
 
 </html>
@@ -18,10 +18,18 @@
     const avltree = new AVLTree();
     avltree.insert(3)
     avltree.insert(2)
-    avltree.insert(1)
-    avltree.insert(8)
-    avltree.insert(21)
+    avltree.insert(6)
+    avltree.insert(5)
+    avltree.insert(7)
     avltree.insert(4)
-    avltree.insert(12)
+    avltree.insert(8)
+
+
     // console.log(avltree.remove(1));
+    console.log(avltree.root);
+    avltree.remove(2)
+    console.log(avltree.root);
+
+    // console.log(avltree.getNodeHeight(avltree.root));
+
 </script>

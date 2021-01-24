@@ -31,7 +31,6 @@ class AVLTree extends BinarySearchTree {
 
     // LL 向左单旋转
     rotationLL(node) {
-        debugger
         const tmp = node.left;
         node.left = tmp.right;
         tmp.right = node;
@@ -54,12 +53,13 @@ class AVLTree extends BinarySearchTree {
     // Rl 右左旋转
     rotationRL(node) {
         node.right = this.rotationLL(node.right);
-        return this.rotationRL(node);
+        return this.rotationRR(node);
     }
 
     insert(key) {
         this.root = this.insertNode(this.root, key);
     }
+    //  插入节点 如果不在插入  存在直接返回  节点不平衡 旋转
     insertNode(node, key) {
         if (node === null) {
             //  没有数据的时候直接创建
@@ -71,6 +71,7 @@ class AVLTree extends BinarySearchTree {
             //  插到右侧
             node.right = this.insertNode(node.right, key)
         } else {
+            //  如果插入的节点存在 直接返回
             return node;
         }
         
@@ -100,7 +101,8 @@ class AVLTree extends BinarySearchTree {
     //  获取平衡因子
     getBalanceFactor(node) {
         //  计算高度差值    通过左侧节点删除右侧节点计算出高度差值
-        const heightDifference = this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
+        const heightDifference = 
+            this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
         switch (heightDifference) {
             case -2:
                 return BalanceFactor.UNBALANCED_RIGHT;  //  1
@@ -119,7 +121,6 @@ class AVLTree extends BinarySearchTree {
         if (node === null) {
             return -1;
         }
-        console.log(node);
         return Math.max(
             this.getNodeHeight(node.left),
             this.getNodeHeight(node.right)
@@ -130,49 +131,50 @@ class AVLTree extends BinarySearchTree {
     }
     //  移除节点
     removeNode(node, key) {
-        //  使用继承方法的移除；
+        //  使用继承方法的移除；    递归移除
         node = super.removeNode(node, key);
         if (node === null) return node //    null 不需要平衡
 
         //  检测树是否平衡  递归计算 以移除的节点 为根节点的平衡因子
         const balanceFactor = this.getBalanceFactor(node);
         //  左侧移除完后不平衡
-        if (balanceFactor === BalanceFactor.UNBALANCED_LEFT) {
+        if (balanceFactor === BalanceFactor.UNBALANCED_LEFT /* 5 */) {
             //  计算左侧树平衡因子
             const balanceFactorLeft = this.getBalanceFactor(node.left);
             //  左侧树先左不平衡
             if (
-                balanceFactorLeft === BalanceFactor.BALANCED ||
-                balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT
+                balanceFactorLeft === BalanceFactor.BALANCED || //  3
+                balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT    //  4
             ) {
                 //  左侧旋转
                 return this.rotationLL(node)
             }
             //  左侧树向右不平衡
-            if (balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+            if (balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT/* 2 */) {
                 //  旋转
                 return this.rotationLR(node);
             }
         }
 
         //  右侧树移除完后不平衡
-        if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT) {
+        if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT/* 1 */) {
             //  计算右侧平衡因子
             const balanceFactorRight = this.getBalanceFactor(node.right);
             // 右侧树向右不平衡
             if (
-                balanceFactorRight === BalanceFactor.BALANCED ||
-                balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT
+                balanceFactorRight === BalanceFactor.BALANCED ||    //  3
+                balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT  //  2
             ) {
                 //  有侧旋转
                 return this.rotationRR(node)
             }
             //  右侧向左不平衡
-            if (balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+            if (balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT/* 4 */) {
                 // 左右旋转
                 return this.rotationRL(node.right)
             }
         }
         return node;
     }
+
 }
