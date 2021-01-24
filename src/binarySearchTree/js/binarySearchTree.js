@@ -62,13 +62,13 @@ class BinarySearchTree {
         this.inOrderTraverseNode(this.root, callback);
     }
     inOrderTraverseNode(node, callback) {
-        //  停止递归的条件
+        //  停止递归的条件      等于null的时候 栈执行 最后进去的小值
         if (node !== null) {
-            //  通过栈先把所有小的都放到栈里面
-            //  先遍历左测 小节点 
+            //  从大到小 依次压入栈底
             this.inOrderTraverseNode(node.left, callback);
-            callback(node.key);
-            //  后遍历右测 大节点
+            //	最小值没有节点的时候 从最小值开始依次弹出
+            callback(node.key); //  弹栈
+            //  弹完后把右侧节点传入
             this.inOrderTraverseNode(node.right, callback)
         }
     }
@@ -79,8 +79,11 @@ class BinarySearchTree {
     }
     perOrderTraverseNode(node, callback) {
         if (node !== null) {
+            //	执行根节点
             callback(node.key);
+            //  寻找左侧    小值
             this.perOrderTraverseNode(node.left, callback);
+            // 寻找右侧
             this.perOrderTraverseNode(node.right, callback);
         }
     }
@@ -91,8 +94,11 @@ class BinarySearchTree {
     }
     postOrderTraverseNode(node, callback) {
         if (node !== null) {
+            // 寻找左侧
             this.postOrderTraverseNode(node.left, callback)
+            //  寻找右侧
             this.postOrderTraverseNode(node.right, callback)
+            //  节点
             callback(node.key)
         }
     }
@@ -116,7 +122,7 @@ class BinarySearchTree {
         while (node !== null && node.right !== null) {
             node = node.right;
         }
-        return node.key
+        return node
     }
 
     // 搜索一个特定的值
